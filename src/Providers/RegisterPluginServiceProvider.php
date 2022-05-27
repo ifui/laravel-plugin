@@ -3,8 +3,10 @@
 namespace Ifui\LaravelPlugin\Providers;
 
 use Exception;
+use Illuminate\Console\OutputStyle;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
+use Psy\Readline\Hoa\Console;
 
 class RegisterPluginServiceProvider extends ServiceProvider
 {
@@ -26,7 +28,11 @@ class RegisterPluginServiceProvider extends ServiceProvider
         foreach ($pluginProviders as $pluginProvider) {
             if ($pluginProvider->active) {
                 foreach ($pluginProvider->providers as $provider) {
-                    class_exists($provider) && $this->app->register($provider);
+                    try {
+                        $this->app->register($provider);
+                    } catch (Exception) {
+                        echo "{$pluginProvider->name} does not exist! Please update the plugin.json or run php artisan plugin:rescan.";
+                    }
                 }
             }
         }
