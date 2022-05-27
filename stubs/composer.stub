@@ -1,0 +1,24 @@
+{
+    "name": "ifui/{{ name }}",
+    "description": "{{ description }}",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "{{ author }}",
+            "email": "{{ email }}",
+            "homepage": "{{ homepage }}"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": {{ providers }},
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "{{ namespaceComposer }}": ""
+        }
+    }
+}

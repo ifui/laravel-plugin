@@ -1,0 +1,35 @@
+<?php
+
+namespace {{ namespace }}\App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * The plugin namespace of controllers.
+     *
+     * @var string
+     */
+    protected string $pluginNamespace = '{{ namespace }}\App\Http\Controllers';
+
+    /**
+     * Define your route model bindings, pattern filters, etc.
+     *
+     * @return void
+     */
+    public function boot(): void
+    {
+        $this->routes(function () {
+            Route::middleware('api')
+                ->prefix('api')
+                ->namespace($this->pluginNamespace)
+                ->group(plugin_path('{{ name }}', 'routes/api.php'));
+
+            Route::middleware('web')
+                ->namespace($this->pluginNamespace)
+                ->group(plugin_path('{{ name }}', 'routes/web.php'));
+        });
+    }
+}

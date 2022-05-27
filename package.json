@@ -1,0 +1,34 @@
+{
+    "name": "laravel-plugin",
+    "version": "0.0.1",
+    "description": "laravel-plugin for laravel",
+    "main": "main.js",
+    "scripts": {
+        "lint:prettier": "prettier --write \"**/*.{php,md,js,jsx,ts,tsx,vue,html}\"",
+        "lint:lint-staged": "lint-staged",
+        "prepare": "husky install",
+        "log": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-option.js"
+    },
+    "author": "ifui",
+    "license": "MIT",
+    "devDependencies": {
+        "@commitlint/cli": "^17.0.1",
+        "@commitlint/config-conventional": "^17.0.0",
+        "@prettier/plugin-php": "^0.18.6",
+        "conventional-changelog": "^3.1.25",
+        "husky": "^8.0.1",
+        "lint-staged": "^12.4.2",
+        "prettier": "^2.6.2"
+    },
+    "changelog": {
+        "bugsUrl": "https://github.com/ifui/laravel-plugin/issues/",
+        "emojis": true,
+        "authorName": true,
+        "authorEmail": true
+    },
+    "lint-staged": {
+        "*.php": [
+            "prettier --write"
+        ]
+    }
+}
