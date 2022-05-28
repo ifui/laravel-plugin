@@ -127,7 +127,7 @@ class ControllerMakeCommand extends BaseControllerMakeCommand
         ];
 
         if ($this->option('requests')) {
-            $namespace = 'App\\Http\\Requests';
+            $namespace = $this->rootNamespace() . 'Http\\Requests';
 
             [$storeRequestClass, $updateRequestClass] = $this->generateFormRequests(
                 $modelClass,

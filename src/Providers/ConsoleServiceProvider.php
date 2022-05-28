@@ -14,6 +14,7 @@ use Ifui\LaravelPlugin\Commands\Factories\FactoryMakeCommand;
 use Ifui\LaravelPlugin\Commands\Foundation\ModelMakeCommand;
 use Ifui\LaravelPlugin\Commands\Foundation\PolicyMakeCommand;
 use Ifui\LaravelPlugin\Commands\Foundation\RequestMakeCommand;
+use Ifui\LaravelPlugin\Commands\Foundation\TestMakeCommand;
 use Ifui\LaravelPlugin\Commands\PluginListCommand;
 use Ifui\LaravelPlugin\Commands\PluginNewCommand;
 use Ifui\LaravelPlugin\Commands\PluginRescanCommand;
@@ -45,6 +46,7 @@ class ConsoleServiceProvider extends ServiceProvider
         SeederMakeCommand::class,
         PolicyMakeCommand::class,
         RequestMakeCommand::class,
+        TestMakeCommand::class,
     ];
 
     public function register(): void
