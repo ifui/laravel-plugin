@@ -56,7 +56,7 @@ class LaravelPlugin
         $this->app = $app;
         $this->filesystem = $app['files'];
         $this->configPath = $this->app['config']->get('laravel-plugin.setup.config');
-        $this->plugins = Collection::make(json_decode($this->filesystem->get($this->configPath)));
+        $this->plugins = $this->getPlugins();
     }
 
     /**
@@ -95,7 +95,11 @@ class LaravelPlugin
      */
     public function getPlugins(): Collection
     {
-        return Collection::make(json_decode($this->filesystem->get($this->configPath)));
+        if ($this->filesystem->exists($this->configPath)) {
+            return Collection::make(json_decode($this->filesystem->get($this->configPath)));
+        } else {
+            return Collection::make([]);
+        }
     }
 
     /**
